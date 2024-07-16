@@ -69,7 +69,7 @@ The datapath components are the building blocks of the processor, responsible fo
 
 3. **Implement the Control Unit**:
    - Develop VHDL code for the control unit to generate the appropriate control signals.
-    ![control](img\control.PNG)
+    ![control](/img/control.PNG)
 4. **Implement the Memory**:
    - Develop VHDL code for the control unit to generate the appropriate control signals.
 
