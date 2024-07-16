@@ -16,22 +16,18 @@ begin
     process (a, b, alu_control)
     begin
         case alu_control is
-            when "000" => -- addition
+            when "010" => -- addition
                 alu_result <= a + b;
-            when "001" => -- subtraction
+            when "110" => -- subtraction
                 alu_result <= a - b;
-            when "010" => -- bitwise and
+            when "000" => -- bitwise and
                 alu_result <= a and b;
-            when "011" => -- bitwise or
+            when "001" => -- bitwise or
                 alu_result <= a or b;
-            when "100" => -- bitwise xor
-                alu_result <= a xor b;
-            when "101" => -- shift left
-                alu_result <= a sll 1;
-            when "110" => -- shift right
-                alu_result <= a srl 1;
-            when "111" => -- shift right arithmetic
-                alu_result <= a sra 1;
+            when "111" => -- set less than
+                alu_result <= '1' when signed(a) < signed(b) else '0';
+            when "011" => -- multiply
+                alu_result <= a * b;
             when others => -- undefined
                 alu_result <= (others => 'X');
         end case;
