@@ -13,7 +13,23 @@ begin
     process(aluop, funct)
     begin
         case aluop is 
-            --TODO
+            when "00" => alu_control <= "010"; -- addition
+            when "01" => alu_control <= "110"; -- subtraction
+            when others => -- look at funct
+                case funct is
+                    when "100000" => -- add
+                        alu_control <= "010";
+                    when "100010" => -- subtract
+                        alu_control <= "110";
+                    when "100100" => -- and
+                        alu_control <= "000";
+                    when "100101" => -- or
+                        alu_control <= "001";
+                    when "101010" => -- set less than
+                        alu_control <= "111";
+                    when others => -- undefined
+                        alu_control <= (others => '0');
+                end case;
         end case;
     end process;
 end behavioral;
