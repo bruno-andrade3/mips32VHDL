@@ -1,0 +1,5 @@
+ALUOp, Meaning
+00, add
+01, subtract
+10, look at funct field
+11, n/a
