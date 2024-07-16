@@ -79,3 +79,9 @@ The datapath components are the building blocks of the processor, responsible fo
 
 6. **Testing and Verification**:
    - Create testbenches to verify the functionality of individual components and the overall processor.
+
+## References
+
+1. https://github.com/bilgehan-biricik/Single-Cycle-MIPS/tree/master
+
+2. Digital Design and Computer Architecture, David Money Harris & Sarah L. Harris
