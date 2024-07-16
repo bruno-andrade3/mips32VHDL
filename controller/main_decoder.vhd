@@ -24,13 +24,13 @@ begin
             when "100011" => -- lw
                 controls <= "101001000";
             when "101011" => -- sw
-                controls <= "0X101X000";
+                controls <= "001010000";
             when "000100" => -- beq
-                controls <= "0X0100010";
+                controls <= "000100010";
             when "001000" => -- addi
                 controls <= "101000000"
             when "000010" => -- jump
-                controls <= "0XXX0XXX1";
+                controls <= "000000001";
             when "000011" => -- jal
                 controls <= "101000001"
             when others => -- undefined
