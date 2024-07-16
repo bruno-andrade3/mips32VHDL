@@ -7,7 +7,7 @@ This README outlines the key components required for the development of the proc
 ## Project Structure
 
 The project is structured into several key modules, each responsible for different aspects of the MIPS32 processor. The main components are:
-
+![MIPS32 datapath](/img/schematic.PNG)
 1. **Control Unit**
 2. **Datapath Components**
 3. **External Memory**
