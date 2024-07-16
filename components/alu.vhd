@@ -16,20 +16,18 @@ begin
     process (a, b, alu_control)
     begin
         case alu_control is
-            when "010" => -- addition
-                alu_result <= a + b;
-            when "110" => -- subtraction
-                alu_result <= a - b;
             when "000" => -- bitwise and
                 alu_result <= a and b;
             when "001" => -- bitwise or
                 alu_result <= a or b;
+            when "010" => -- addition
+                alu_result <= unsigned(a) + unsigned(b);
+            when "110" => -- subtraction
+                alu_result <= unsigned(a) - unsigned(b);
             when "111" => -- set less than
                 alu_result <= '1' when signed(a) < signed(b) else '0';
-            when "011" => -- multiply
-                alu_result <= a * b;
-            when others => -- undefined
-                alu_result <= (others => 'X');
+            when others => null;-- undefined
+                alu_result <= (others => '0');
         end case;
         zero <= '1' when alu_result = (others => '0') else '0';
     end process;
