@@ -10,5 +10,6 @@ end adder;
 
 architecture dataflow of adder is
 begin
-    y <= a + b;
+    -- Convert std_logic_vector to unsigned for addition, then convert the result back to std_logic_vector
+    y <= std_logic_vector(unsigned(a) + unsigned(b));
 end dataflow;
