@@ -8,7 +8,7 @@ entity mips is
         pc: out std_logic_vector(31 downto 0);
         instruction: in std_logic_vector(31 downto 0);
         mem_write: out std_logic;
-        alu_out: out std_logic_vector(31 downto 0);
+        alu_out, write_data: out std_logic_vector(31 downto 0);
         read_data: out std_logic_vector(31 downto 0)
     );
 end mips;
@@ -45,34 +45,34 @@ architecture struct of mips is
     signal alu_control: std_logic_vector(2 downto 0);
 begin
     cont: controller port map (
-        opcode => instruction(31 downto 26),
-        funct => instruction(5 downto 0),
-        zero => zero,
-        memtoreg => memtoreg,
-        memwrite => mem_write,
-        pcsrc => pcsrc,
-        alusrc => alusrc,
-        regdst => regdst,
-        regwrite => regwrite,
-        jump => jump,
-        alu_control => alu_control
+        instruction(31 downto 26),
+        instruction(5 downto 0),
+        zero,
+        memtoreg,
+        mem_write,
+        pcsrc,
+        alusrc,
+        regdst,
+        regwrite,
+        jump,
+        alu_control
     );
     dp: datapath port map (
-        clock => clock,
-        reset => reset,
-        memtoreg => memtoreg,
-        pcsrc => pcsrc,
-        alusrc => alusrc,
-        regdst => regdst,
-        regwrite => regwrite,
-        jump => jump,
-        alu_control => alu_control,
-        zero => zero,
-        pc => pc,
-        instruction => instruction,
-        alu_out => alu_out,
-        write_data => read_data,
-        read_data => read_data
+        clock,
+        reset,
+        memtoreg,
+        pcsrc,
+        alusrc,
+        regdst,
+        regwrite,
+        jump,
+        alu_control,
+        zero,
+        pc,
+        instruction,
+        alu_out,
+        write_data,
+        read_data
     );
 
-end architecture;
+end struct;
