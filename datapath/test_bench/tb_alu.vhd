@@ -43,6 +43,7 @@ begin
         alu_control <= "000"; -- AND
         wait for 10 ns;
         assert (alu_result = x"00000003") report "Error in AND operation" severity error;
+        assert (zero = '0') report "Error in AND operation zero flag" severity error;
 
         -- Test case 2: bitwise OR
         a <= x"0000000F"; -- 15
@@ -50,6 +51,7 @@ begin
         alu_control <= "001"; -- OR
         wait for 10 ns;
         assert (alu_result = x"0000000F") report "Error in OR operation" severity error;
+        assert (zero = '0') report "Error in OR operation zero flag" severity error;
 
         -- Test case 3: addition
         a <= x"00000005"; -- 5
@@ -57,6 +59,7 @@ begin
         alu_control <= "010"; -- ADD
         wait for 10 ns;
         assert (alu_result = x"00000008") report "Error in ADD operation" severity error;
+        assert (zero = '0') report "Error in ADD operation zero flag" severity error;
 
         -- Test case 4: subtraction
         a <= x"00000005"; -- 5
@@ -64,6 +67,7 @@ begin
         alu_control <= "110"; -- SUB
         wait for 10 ns;
         assert (alu_result = x"00000002") report "Error in SUB operation" severity error;
+        assert (zero = '0') report "Error in SUB operation zero flag" severity error;
 
         -- Test case 5: set less than
         a <= x"00000005"; -- 5
@@ -71,6 +75,23 @@ begin
         alu_control <= "111"; -- SLT
         wait for 10 ns;
         assert (alu_result = x"00000001") report "Error in SLT operation" severity error;
+        assert (zero = '0') report "Error in SLT operation zero flag" severity error;
+
+        -- Test case 6: zero flag check for AND
+        a <= x"00000000"; -- 0
+        b <= x"00000000"; -- 0
+        alu_control <= "000"; -- AND
+        wait for 10 ns;
+        assert (alu_result = x"00000000") report "Error in AND operation for zero" severity error;
+        assert (zero = '1') report "Error in AND operation zero flag for zero" severity error;
+
+        -- Test case 7: zero flag check for ADD
+        a <= x"00000000"; -- 0
+        b <= x"00000000"; -- 0
+        alu_control <= "010"; -- ADD
+        wait for 10 ns;
+        assert (alu_result = x"00000000") report "Error in ADD operation for zero" severity error;
+        assert (zero = '1') report "Error in ADD operation zero flag for zero" severity error;
 
         -- End simulation
         wait;
