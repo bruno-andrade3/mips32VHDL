@@ -80,8 +80,6 @@ begin
         assert (y = x"00000000")
             report "Test case 7 failed" severity error;
 
-        -- Add more test cases if needed
-
         -- End simulation
         wait;
     end process;
