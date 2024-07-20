@@ -13,7 +13,7 @@ entity datapath is
         pc : buffer std_logic_vector(31 downto 0);
         instruction: in std_logic_vector(31 downto 0);
         alu_out, write_data: buffer std_logic_vector(31 downto 0);
-        read_data : in std_logic_vector(31 downto 0);
+        read_data : in std_logic_vector(31 downto 0)
     );
 end datapath;
 
