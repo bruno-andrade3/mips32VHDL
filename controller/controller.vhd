@@ -6,7 +6,7 @@ entity controller is -- controller for the single cycle processor
         opcode            : in  std_logic_vector(5 downto 0);
         funct             : in  std_logic_vector(5 downto 0);
         zero              : in  std_logic;
-        memtoreg, memrite : out std_logic;
+        memtoreg, memwrite : out std_logic;
         pcsrc, alusrc     : out std_logic;
         regdst, regwrite  : out std_logic;
         jump              : out std_logic;
@@ -17,7 +17,7 @@ architecture struct of controller is
     component main_decoder
         port (
             opcode            : in std_logic_vector(5 downto 0);
-            memtoreg, memrite : out std_logic;
+            memtoreg, memwrite : out std_logic;
             branch, alusrc    : out std_logic;
             regdst, regwrite  : out std_logic;
             jump              : out std_logic;
@@ -35,7 +35,7 @@ architecture struct of controller is
     signal branch: std_logic;
 
 begin
-    md: main_decoder port map ( opcode, memtoreg, memrite, branch, alusrc, regdst, regwrite, jump, aluop );
+    md: main_decoder port map ( opcode, memtoreg, memwrite, branch, alusrc, regdst, regwrite, jump, aluop );
     ad: alu_decoder port map ( funct, aluop, alu_control );
 
     pcsrc <= branch and zero;

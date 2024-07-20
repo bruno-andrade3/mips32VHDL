@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 entity main_decoder is
     port (
         opcode            : in std_logic_vector(5 downto 0);
-        memtoreg, memrite : out std_logic;
+        memtoreg, memwrite : out std_logic;
         branch, alusrc    : out std_logic;
         regdst, regwrite  : out std_logic;
         jump              : out std_logic;
@@ -42,7 +42,7 @@ begin
     regdst <= controls(1);
     alusrc <= controls(2);
     branch <= controls(3);
-    memrite <= controls(4);
+    memwrite <= controls(4);
     memtoreg <= controls(5);
     aluop <= controls(6 downto 7);
     jump <= controls(8);
