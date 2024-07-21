@@ -85,3 +85,5 @@ The datapath components are the building blocks of the processor, responsible fo
 1. https://github.com/bilgehan-biricik/Single-Cycle-MIPS/tree/master
 
 2. Digital Design and Computer Architecture, David Money Harris & Sarah L. Harris
+
+3. Installation of GHDL & GtkWave for Windows - https://www.youtube.com/watch?v=0JJku1vTu78&ab_channel=Amnah%27sLab
