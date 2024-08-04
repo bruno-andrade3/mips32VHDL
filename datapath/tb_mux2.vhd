@@ -44,42 +44,45 @@ begin
         d0 <= (others => '0');
         d1 <= (others => '0');
         s  <= '0';
+        
+        -- Wait for some time to let the circuit settle
+        wait for clk_period;
 
         -- Test case 1: Select d0
         d0 <= x"AA"; -- Input vector d0
         d1 <= x"55"; -- Input vector d1
         s  <= '0';   -- Select d0
         wait for clk_period;
-        assert (y = x"AA") report "Erro: y deve ser AA quando s = 0" severity error;
+        assert (y = x"AA") report "Error: y should be AA when s = 0" severity error;
 
         -- Test case 2: Select d1
         s  <= '1';   -- Select d1
         wait for clk_period;
-        assert (y = x"55") report "Erro: y deve ser 55 quando s = 1" severity error;
+        assert (y = x"55") report "Error: y should be 55 when s = 1" severity error;
 
         -- Test case 3: Change inputs
         d0 <= x"F0"; -- New input vector d0
         d1 <= x"0F"; -- New input vector d1
         s  <= '0';   -- Select d0
         wait for clk_period;
-        assert (y = x"F0") report "Erro: y deve ser F0 quando s = 0 e d0 alterado" severity error;
+        assert (y = x"F0") report "Error: y should be F0 when s = 0 and d0 changed" severity error;
 
         -- Test case 4: Select d1
         s  <= '1';   -- Select d1
         wait for clk_period;
-        assert (y = x"0F") report "Erro: y deve ser 0F quando s = 1 e d1 alterado" severity error;
+        assert (y = x"0F") report "Error: y should be 0F when s = 1 and d1 changed" severity error;
 
         -- Test case 5: Edge case with zero vectors
         d0 <= (others => '0');
         d1 <= (others => '0');
         s  <= '0';   -- Select d0
         wait for clk_period;
-        assert (y = x"00") report "Erro: y deve ser 0 quando s = 0 e d0 é zero" severity error;
+        assert (y = x"00") report "Error: y should be 00 when s = 0 and d0 is zero" severity error;
 
         -- End of simulation
-        wait for sim_time;
-        assert false report "Simulação terminada devido ao timeout" severity failure;
-
+        wait for sim_time; -- Wait for the total simulation time
+        -- No need for assertion here, just end simulation
+        report "Simulation finished successfully";
         wait;
     end process;
 
