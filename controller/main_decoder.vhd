@@ -3,18 +3,18 @@ use ieee.std_logic_1164.all;
 
 entity main_decoder is
     port (
-        opcode            : in std_ulogic_vector(5 downto 0);
-        memtoreg, memwrite : out std_ulogic;
-        branch, alusrc    : out std_ulogic;
-        regdst, regwrite  : out std_ulogic;
-        jump              : out std_ulogic;
-        aluop             : out std_ulogic_vector(1 downto 0)
+        opcode            : in std_logic_vector(5 downto 0);
+        memtoreg, memwrite : out std_logic;
+        branch, alusrc    : out std_logic;
+        regdst, regwrite  : out std_logic;
+        jump              : out std_logic;
+        aluop             : out std_logic_vector(1 downto 0)
 
     );
 end main_decoder;
 
 architecture behavioral of main_decoder is
-    signal controls: std_ulogic_vector(8 downto 0);
+    signal controls: std_logic_vector(8 downto 0);
 begin
     process(opcode)
     begin

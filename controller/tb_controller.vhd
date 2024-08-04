@@ -5,32 +5,32 @@ entity tb_controller is
 end tb_controller;
 
 architecture test of tb_controller is
-    signal opcode      : std_ulogic_vector(5 downto 0);
-    signal funct       : std_ulogic_vector(5 downto 0);
-    signal zero        : std_ulogic;
-    signal memtoreg    : std_ulogic;
-    signal memwrite    : std_ulogic;
-    signal pcsrc       : std_ulogic;
-    signal alusrc      : std_ulogic;
-    signal regdst      : std_ulogic;
-    signal regwrite    : std_ulogic;
-    signal jump        : std_ulogic;
-    signal alu_control : std_ulogic_vector(2 downto 0);
+    signal opcode      : std_logic_vector(5 downto 0);
+    signal funct       : std_logic_vector(5 downto 0);
+    signal zero        : std_logic;
+    signal memtoreg    : std_logic;
+    signal memwrite    : std_logic;
+    signal pcsrc       : std_logic;
+    signal alusrc      : std_logic;
+    signal regdst      : std_logic;
+    signal regwrite    : std_logic;
+    signal jump        : std_logic;
+    signal alu_control : std_logic_vector(2 downto 0);
 
     -- Instantiate the controller
     component controller
         port (
-            opcode      : in  std_ulogic_vector(5 downto 0);
-            funct       : in  std_ulogic_vector(5 downto 0);
-            zero        : in  std_ulogic;
-            memtoreg    : out std_ulogic;
-            memwrite    : out std_ulogic;
-            pcsrc       : out std_ulogic;
-            alusrc      : out std_ulogic;
-            regdst      : out std_ulogic;
-            regwrite    : out std_ulogic;
-            jump        : out std_ulogic;
-            alu_control : out std_ulogic_vector(2 downto 0)
+            opcode      : in  std_logic_vector(5 downto 0);
+            funct       : in  std_logic_vector(5 downto 0);
+            zero        : in  std_logic;
+            memtoreg    : out std_logic;
+            memwrite    : out std_logic;
+            pcsrc       : out std_logic;
+            alusrc      : out std_logic;
+            regdst      : out std_logic;
+            regwrite    : out std_logic;
+            jump        : out std_logic;
+            alu_control : out std_logic_vector(2 downto 0)
         );
     end component;
 

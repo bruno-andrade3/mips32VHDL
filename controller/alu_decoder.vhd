@@ -3,9 +3,9 @@ use ieee.std_logic_1164.all;
 
 entity alu_decoder is
     port (
-        funct: in std_ulogic_vector(5 downto 0);
-        aluop: in std_ulogic_vector(1 downto 0);
-        alu_control: out std_ulogic_vector(2 downto 0));
+        funct: in std_logic_vector(5 downto 0);
+        aluop: in std_logic_vector(1 downto 0);
+        alu_control: out std_logic_vector(2 downto 0));
 end alu_decoder;
 
 architecture behavioral of alu_decoder is
@@ -27,6 +27,8 @@ begin
                         alu_control <= "001";
                     when "101010" => -- set less than
                         alu_control <= "111";
+                    when "101011" => -- mult
+                        alu_control <= "011";
                     when others => -- undefined
                         alu_control <= (others => '0');
                 end case;
