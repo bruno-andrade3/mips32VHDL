@@ -26,9 +26,9 @@ architecture struct of datapath is
             zero : out std_logic
         );
     end component;
-    component reg_file
+    component register_file
         port (
-            clock: in std_logic;
+            clk: in std_logic;
             we3: in std_logic;
             ra1, ra2, wa3: in std_logic_vector(4 downto 0);
             wd3: in std_logic_vector(31 downto 0);
@@ -44,7 +44,7 @@ architecture struct of datapath is
     component shift_left2
         port (
             a : in std_logic_vector(31 downto 0);
-            result : out std_logic_vector(31 downto 0)
+            y : out std_logic_vector(31 downto 0)
         );
     end component;
     component sign_extend
@@ -81,10 +81,37 @@ begin
     pcbrmux: mux2 generic map(32) port map(pcplus4, pcbranch, pcsrc, pcnextbr);
     pcmux: mux2 generic map(32) port map(pcnextbr, pcjump, jump, pcnext);
     --register file logic
-    rf: reg_file port map(clock, regwrite, instruction(25 downto 21), instruction(20 downto 16), writereg, result, srca, write_data);
-    wrmux: mux2 generic map(5) port map(instruction(20 downto 16), instruction(15 downto 11), regdst, writereg);
-    resmux: mux2 generic map(32) port map(alu_out, read_data, memtoreg, result);
-    se: sign_extend port map(instruction(15 downto 0), signimm);
+    rf: register_file
+    port map (
+        clk => clock,
+        we3 => regwrite,
+        ra1 => instruction(25 downto 21),
+        ra2 => instruction(20 downto 16),
+        wa3 => writereg,
+        wd3 => result,
+        rd1 => srca,
+        rd2 => write_data
+    );
+    wrmux: mux2 generic map(5) 
+    port map (
+        instruction(20 downto 16),
+        instruction(15 downto 11),
+        regdst,
+        writereg
+    );
+    resmux: mux2 generic map(32)
+    port map (
+        alu_out,
+        read_data,
+        memtoreg,
+        result
+        );
+    se: sign_extend 
+    port map (
+        instruction(15 downto 0),
+        signimm
+        );
+
     --ALU logic
     srcbmux: mux2 generic map(32) port map(write_data, signimm, alusrc, srcb);
     mainalu: alu port map(srca, srcb, alu_control, alu_out, zero);
