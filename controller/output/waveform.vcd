@@ -1,0 +1,206 @@
+$date
+  Sun Aug 04 19:09:00 2024
+$end
+$version
+  GHDL v0
+$end
+$timescale
+  1 fs
+$end
+$scope module standard $end
+$upscope $end
+$scope module std_logic_1164 $end
+$upscope $end
+$scope module tb_controller $end
+$var reg 6 ! opcode[5:0] $end
+$var reg 6 " funct[5:0] $end
+$var reg 1 # zero $end
+$var reg 1 $ memtoreg $end
+$var reg 1 % memwrite $end
+$var reg 1 & pcsrc $end
+$var reg 1 ' alusrc $end
+$var reg 1 ( regdst $end
+$var reg 1 ) regwrite $end
+$var reg 1 * jump $end
+$var reg 3 + alu_control[2:0] $end
+$scope module uut $end
+$var reg 6 , opcode[5:0] $end
+$var reg 6 - funct[5:0] $end
+$var reg 1 . zero $end
+$var reg 1 / memtoreg $end
+$var reg 1 0 memwrite $end
+$var reg 1 1 pcsrc $end
+$var reg 1 2 alusrc $end
+$var reg 1 3 regdst $end
+$var reg 1 4 regwrite $end
+$var reg 1 5 jump $end
+$var reg 3 6 alu_control[2:0] $end
+$var reg 2 7 aluop[1:0] $end
+$var reg 1 8 branch $end
+$scope module md $end
+$var reg 6 9 opcode[5:0] $end
+$var reg 1 : memtoreg $end
+$var reg 1 ; memwrite $end
+$var reg 1 < branch $end
+$var reg 1 = alusrc $end
+$var reg 1 > regdst $end
+$var reg 1 ? regwrite $end
+$var reg 1 @ jump $end
+$var reg 2 A aluop[1:0] $end
+$var reg 9 B controls[8:0] $end
+$upscope $end
+$scope module ad $end
+$var reg 6 C funct[5:0] $end
+$var reg 2 D aluop[1:0] $end
+$var reg 3 E alu_control[2:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+b000000 !
+b100000 "
+0#
+0$
+0%
+0&
+0'
+1(
+1)
+0*
+b010 +
+b000000 ,
+b100000 -
+0.
+0/
+00
+01
+02
+13
+14
+05
+b010 6
+b10 7
+08
+b000000 9
+0:
+0;
+0<
+0=
+1>
+1?
+0@
+b10 A
+b110000100 B
+b100000 C
+b10 D
+b010 E
+#100000000
+b100010 "
+b110 +
+b100010 -
+b110 6
+b100010 C
+b110 E
+#200000000
+b100100 "
+b000 +
+b100100 -
+b000 6
+b100100 C
+b000 E
+#300000000
+b100101 "
+b001 +
+b100101 -
+b001 6
+b100101 C
+b001 E
+#400000000
+b101010 "
+b111 +
+b101010 -
+b111 6
+b101010 C
+b111 E
+#500000000
+b100011 !
+1$
+1'
+0(
+b010 +
+b100011 ,
+1/
+12
+03
+b010 6
+b00 7
+b100011 9
+1:
+1=
+0>
+b00 A
+b101001000 B
+b00 D
+b010 E
+#600000000
+b101011 !
+0$
+1%
+0)
+b101011 ,
+0/
+10
+04
+b101011 9
+0:
+1;
+0?
+b001010000 B
+#700000000
+b000000 !
+b000000 "
+0%
+0'
+1(
+1)
+b000 +
+b000000 ,
+b000000 -
+00
+02
+13
+14
+b000 6
+b10 7
+b000000 9
+0;
+0=
+1>
+1?
+b10 A
+b110000100 B
+b000000 C
+b10 D
+b000 E
+#800000000
+b000010 !
+0(
+0)
+1*
+b010 +
+b000010 ,
+03
+04
+15
+b010 6
+b00 7
+b000010 9
+0>
+0?
+1@
+b00 A
+b000000001 B
+b00 D
+b010 E
+#900000000
