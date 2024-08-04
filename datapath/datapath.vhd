@@ -26,7 +26,7 @@ architecture struct of datapath is
             zero : out std_logic
         );
     end component;
-    component reg_file
+    component register_file
         port (
             clock: in std_logic;
             we3: in std_logic;
@@ -81,7 +81,7 @@ begin
     pcbrmux: mux2 generic map(32) port map(pcplus4, pcbranch, pcsrc, pcnextbr);
     pcmux: mux2 generic map(32) port map(pcnextbr, pcjump, jump, pcnext);
     --register file logic
-    rf: reg_file port map(clock, regwrite, instruction(25 downto 21), instruction(20 downto 16), writereg, result, srca, write_data);
+    rf: register_file port map(clock, regwrite, instruction(25 downto 21), instruction(20 downto 16), writereg, result, srca, write_data);
     wrmux: mux2 generic map(5) port map(instruction(20 downto 16), instruction(15 downto 11), regdst, writereg);
     resmux: mux2 generic map(32) port map(alu_out, read_data, memtoreg, result);
     se: sign_extend port map(instruction(15 downto 0), signimm);
