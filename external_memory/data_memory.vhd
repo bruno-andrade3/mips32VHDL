@@ -1,9 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-use std.textio.all;
-
-use ieee.numeric_std.all;
 
 entity data_memory is
     port (
@@ -16,19 +13,16 @@ entity data_memory is
 end data_memory;
 
 architecture behavioral of data_memory is
+    type ramtype is array (0 to 1023) of std_logic_vector(31 downto 0);
+    signal mem : ramtype := (others => (others => '0'));
 begin
-    process (clock) is 
-        type ramtype is array (0 to 1023) of std_logic_vector(31 downto 0);
-        variable mem : ramtype;
+    process (clock)
     begin
-        loop
-            if rising_edge(clock) then
-                if write_enable = '1' then
-                    mem(to_integer(unsigned(alu_out))) := write_data;
-                end if;
+        if rising_edge(clock) then
+            if write_enable = '1' then
+                mem(to_integer(unsigned(alu_out))) <= write_data;
             end if;
             read_data <= mem(to_integer(unsigned(alu_out)));
-            wait on clock, alu_out;
-        end loop;
+        end if;
     end process;
 end behavioral;
