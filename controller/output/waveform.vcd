@@ -1,0 +1,114 @@
+$date
+  Sun Aug 04 20:49:09 2024
+$end
+$version
+  GHDL v0
+$end
+$timescale
+  1 fs
+$end
+$scope module standard $end
+$upscope $end
+$scope module std_logic_1164 $end
+$upscope $end
+$scope module tb_main_decoder $end
+$var reg 6 ! opcode[5:0] $end
+$var reg 1 " memtoreg $end
+$var reg 1 # memwrite $end
+$var reg 1 $ branch $end
+$var reg 1 % alusrc $end
+$var reg 1 & regdst $end
+$var reg 1 ' regwrite $end
+$var reg 1 ( jump $end
+$var reg 2 ) aluop[1:0] $end
+$scope module uut $end
+$var reg 6 * opcode[5:0] $end
+$var reg 1 + memtoreg $end
+$var reg 1 , memwrite $end
+$var reg 1 - branch $end
+$var reg 1 . alusrc $end
+$var reg 1 / regdst $end
+$var reg 1 0 regwrite $end
+$var reg 1 1 jump $end
+$var reg 2 2 aluop[1:0] $end
+$var reg 9 3 controls[8:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+b000000 !
+0"
+0#
+0$
+0%
+1&
+1'
+0(
+b10 )
+b000000 *
+0+
+0,
+0-
+0.
+1/
+10
+01
+b10 2
+b110000100 3
+#100000000
+b100011 !
+1"
+1%
+0&
+b00 )
+b100011 *
+1+
+1.
+0/
+b00 2
+b101001000 3
+#200000000
+b101011 !
+0"
+1#
+0'
+b101011 *
+0+
+1,
+00
+b001010000 3
+#300000000
+b000100 !
+0#
+1$
+0%
+b01 )
+b000100 *
+0,
+1-
+0.
+b01 2
+b000100010 3
+#400000000
+b001000 !
+0$
+1%
+1'
+b00 )
+b001000 *
+0-
+1.
+10
+b00 2
+b101000000 3
+#500000000
+b000010 !
+0%
+0'
+1(
+b000010 *
+0.
+00
+11
+b000000001 3
+#600000000

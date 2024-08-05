@@ -27,6 +27,8 @@ begin
                         alu_control <= "001";
                     when "101010" => -- set less than
                         alu_control <= "111";
+                    when "101011" => -- mult
+                        alu_control <= "011";
                     when others => -- undefined
                         alu_control <= (others => '0');
                 end case;

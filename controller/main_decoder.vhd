@@ -18,6 +18,8 @@ architecture behavioral of main_decoder is
 begin
     process(opcode)
     begin
+        controls <= (others => '0'); -- valor padrão
+
         case opcode is
             when "000000" => -- R-type
                 controls <= "110000100";
@@ -28,22 +30,22 @@ begin
             when "000100" => -- beq
                 controls <= "000100010";
             when "001000" => -- addi
-                controls <= "101000000"
+                controls <= "101000000";
             when "000010" => -- jump
                 controls <= "000000001";
             when "000011" => -- jal
-                controls <= "101000001"
+                controls <= "101000001";
             when others => -- undefined
                 controls <= "000000000";
         end case;
     end process;
 
-    regwrite <= controls(0);
-    regdst <= controls(1);
-    alusrc <= controls(2);
-    branch <= controls(3);
+    regwrite <= controls(8);
+    regdst <= controls(7);
+    alusrc <= controls(6);
+    branch <= controls(5);
     memwrite <= controls(4);
-    memtoreg <= controls(5);
-    aluop <= controls(6 downto 7);
-    jump <= controls(8);
+    memtoreg <= controls(3);
+    aluop (1 downto 0) <= controls(2 downto 1);
+    jump <= controls(0);
 end behavioral;
